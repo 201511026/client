@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+	<title>회원정보 수정</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<br><br><br><br>  
+	<div class="container-fluid">
+		<form>
+			<div class="form-group row lp-title-upperspace">
+				<label for="InputEmail2" class="col-3 col-form-label font-weight-bold text-center">E-MAIL</label>
+				<div class="col-9" id="myEmail">
+					<!--user e-mail 받아서 뿌리기-->
+					<!--<input type="email" class="form-control" id="InputEmail2" placeholder="Enter email" required>-->
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="InputPassword2" class="col-3 col-form-label text-center font-weight-bold">PW</label>
+				<div class="col-9">
+					<input type="password" class="form-control" id="InputPassword12" placeholder="Enter password" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="InputPassword2" class="col-3 col-form-label text-center font-weight-bold">PW 확인</label>
+				<div class="col-9">
+					<input type="password" class="form-control" id="InputPassword13" placeholder="Enter password" required>
+					<div id="result">same</div>
+				</div> 
+				<div class="col-9">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="InputPhoneNum2" class="col-3 col-form-label text-center font-weight-bold">핸드폰번호</label>
+				<div class="col-9">
+					<input type="number" class="form-control" id="InputPhoneNum2" placeholder="Enter phone number" required>
+				</div>
+			</div>
+			<br />
+			<div class="row lp-btn-upperspace">
+				<div class="col">
+					<button id="btn_change" type="submit" class="btn btn-danger btn-block" onsubmit="fcheckPW()">수정</button>
+				</div>
+				<div class="col">
+					<a class="btn btn-danger btn-block" href="signup.html" role="button">취소</a>
+				</div>
+			</div>
+			</form>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script>//이메일 받아오기
+		jquery.ajax({
+			type:"POST",
+			url:"",
+			data:{"email":email},
+			dataType:"JSON",
+			success: function(data){
+				$("#myEmail").html(data);
+			},
+			error:function(xhr, status, error){ //여기 물어보기
+					alert("다시 시도해주세요."); 
+			}
+		});
+	</script>
+	<script type="text/JavaScript">//비밀번호, 비밀번호 확인 체크하기
+	
+		/*$("#InputPassword13").focusout(function(){
+			var origin = $("#InputPassword12".val();
+				val = $(this).val();
+
+				if(val==""||val==null)
+					$("#result").append("<p>필수 입력사항입니다.</p>");
+				else if(val!=origin)
+					$("#result").append("<p>불일치</p>");
+				else
+					$("#result").append("<p>일치</p>");
+		});*/
+		/*function fcheckPW(){
+			var pwd1 = $("#InputPassword12").val();
+			var pwd2 = $("#InputPassword13").val();
+
+			try{
+				if(pwd1!=pwd2){
+					$("#result").append("<p class='text-center'>비밀번호가 불일치합니다.</p>");
+					pwd2.focus();
+					return false;
+				}
+			}
+			catch(e)
+			return true;
+		}*/
+		/*function isSame(){
+			var pw = $("#InputPassword12").val();
+			var checkpw=$("#InputPassword13").val();
+			//var pw = document.twin.pass1.value;
+			//var confirmPW = document.twin.pass2.value;
+			//if(pw.length<6||pw.length>16){
+			//	window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+			//	document.getElementById('pw').value=document.getElementById('pwCheck').value='';
+			//	document.getElementById('same').innerHTML='';
+			//}
+			if(document.getElementById("pw").value!=''&&document.getElementById("checkpw").value!=''){
+				if(document.getElementById("pw").value==document.getElementById("checkpw").value){
+					document.getElementById("#same").innerHTML='비밀번호가 일치합니다.';
+					document.getElementById("#same").style.color='blue';
+				}
+				else{
+					document.getElementById("same").innerHTML='비밀번호가 일치하지 않습니다.';
+					document.getElementById("same").style.color = 'red';
+				}
+			}
+		}*/
+		 /*function checkPW(){
+		 	var pw = document.getElementById("#InputPassword12").value();
+		 	var pwck=document.getElementById("#InputPassword13").value();
+
+		 	if(pw!=pwck){
+		 		document.getElementById("pwIssame").innerHTML='비밀번호가 틀렸습니다. 다시 입력해주세요.';
+		 		return  false;
+		 	}
+		 }*/
+	</script>
+	<script>//변경된 비밀번호와 핸드폰번호를 백에 넘기기
+		$("#btn_change").click(function(){
+				var password = $("#InputPassword12").val();//input박스 안에 쓰는 값.
+				var phoneNumber = $("#InputPhoneNum2").val();
+
+				alert(password + " " + phoneNumber);
+				location.replace("mypage.html");
+
+				jQuery.ajax({
+					type:"POST",
+					url:"",
+					data:{"password" : password, 
+					"phoneNumber":phoneNumber}, //{"email":email}에서 ""안은 서버와 정한 변수명 
+					dataType:"JSON",
+					success:function(data){
+						//성공시 location.href(로그인페이지의 url)
+						//location.href("login.html");
+						location.replace("mypage.html");
+					},
+					error:function(xhr, status, error){ //여기 물어보기
+						alert("다시 시도해주세요."); 
+					}
+				});
+			});
+		</script>
+</body>
+</html>
+<!---/*var email = $("#InputEmail2").val()//input박스 안에 쓰는 값.
+		document.getElementById("#InputEmail12").value; //자바스크립트
+		$("#InputEmail12").val(); //제이쿼리
+	*/-->

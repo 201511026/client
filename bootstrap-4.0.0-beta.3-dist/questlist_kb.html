@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+	<title>경복궁 퀘스트 목록</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col text-center">
+				<h4 class="mp-title-space font-weight-bold">궁덕궁덕</h4>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<h6 class="text-center"><a href="#" class="text-dark font-weight-bold">마이페이지</a></h6><hr>
+			</div>
+			<div class="col">
+				<h6 class="text-center"><a href="main.html" class="text-dark font-weight-bold">HOME</a></h6>
+			</div>
+			<div class="col">
+				<h6 class="text-center"><a href="#" class="text-dark font-weight-bold">고궁 안내</a></h6>
+			</div>
+		</div>
+		<br>
+		<h6 class="font-weight-bold">경복궁</h6>
+			<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">경복궁 퀘스트 목록</th>
+		      <th scope="col">수행완료 여부</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>광화문</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>근정전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">3</th>
+		      <td>사정전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">4</th>
+		      <td>강녕전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">5</th>
+		      <td>교태전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">6</th>
+		      <td>흠경각</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">7</th>
+		      <td>자경전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">8</th>
+		      <td>함화당&집경당</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">9</th>
+		      <td>건청궁</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">10</th>
+		      <td>집옥재</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">11</th>
+		      <td>태원전</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">12</th>
+		      <td>경회루</td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">13</th>
+		      <td>수정전</td>
+		      <td></td>
+		    </tr>
+		  </tbody>
+		</table>
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-6"><button id="btn_backmypage" type="button" class="btn btn-danger btn-block"><a href="mypage.html" class="text-white">돌아가기</a></button></div>
+			<div class="col"></div>
+		</div>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script>
+		$("td:eq(1)").html("<img src='checked.png'>");
+		jQuery.ajax({
+				type:"POST",
+				url:"", //서버주소
+				data:{"phoneNumber":phoneNumber}, //{"phoneNumber":phoneNumber}에서 ""안은 서버와 정한 변수명 
+				dataType:"JSON",
+				success:function(data){
+					if(data==q1) $("td:eq(1)").html("<img src='checked.png'>");
+					if(data==q2) $("td:eq(3)").html("<img src='checked.png'>");
+					if(data==q3) $("td:eq(5)").html("<img src='checked.png'>");
+					if(data==q4) $("td:eq(7)").html("<img src='checked.png'>");
+					if(data==q5) $("td:eq(9)").html("<img src='checked.png'>");
+					if(data==q6) $("td:eq(11)").html("<img src='checked.png'>");
+					if(data==q7) $("td:eq(13)").html("<img src='checked.png'>");
+					if(data==q8) $("td:eq(15)").html("<img src='checked.png'>");
+					if(data==q9) $("td:eq(17)").html("<img src='checked.png'>");
+					if(data==q10) $("td:eq(19)").html("<img src='checked.png'>");
+					if(data==q11) $("td:eq(21)").html("<img src='checked.png'>");
+					if(data==q12) $("td:eq(23)").html("<img src='checked.png'>");
+					if(data==q13) $("td:eq(25)").html("<img src='checked.png'>");
+				},
+				error:function(xhr, status, error){ //여기 물어보기
+					alert("다시 시도해주세요."); 
+				}
+			});
+		</script>
+</body>
+</html>

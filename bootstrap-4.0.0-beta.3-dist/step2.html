@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+	<title>step2</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col text-center">
+				<h4 class="mp-title-space font-weight-bold">궁덕궁덕</h4>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<h6 class="text-center font-weight-bold"><a href="mypage.html" class="text-dark">마이페이지</a></h6>
+			</div>
+			<div class="col">
+				<h6 class="text-center font-weight-bold"><a href="main.html" class="text-dark">HOME</a></h6>
+			</div>
+			<div class="col">
+				<h6 class="text-center font-weight-bold"><a href="step1.html" class="text-dark">고궁 안내</a></h6>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col text-center">
+				<a href="step1.html" class="text-dark"><i class="material-icons">keyboard_arrow_left</i></a>
+			</div>
+			<div class="col text-center">
+				<h5>STEP 2</h5>
+			</div>
+			<div class="col"></div>
+		</div>
+
+		<!-- Trigger_SpecificpointPopup-->
+		<div class="row">
+				<div class="col text-center">
+					<img src="http://via.placeholder.com/1280x1024" class="img-fluid" data-toggle="modal" data-target="#ModalPopup">
+				</div>
+		</div>
+
+		<div class="row" style="margin-top: 50px">
+			<div class="col"></div>
+			<div class="col-8">
+				<a role="button" href="step1.html" class="btn btn-danger btn-block">안내종료</a>
+			</div>
+			<div class="col"></div>
+		</div>
+
+		<!-- Modal_SpecificpointPopup-->
+		<div class="modal fade" id="ModalPopup" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" style="margin-top: 100px">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col"></div>
+						<div class="col-9 text-center">
+							<h5 class="modal-title text-center" id="ModalLabel">Mdoal Specific title</h5>
+						</div>
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="modal-body text-center">
+						<div class="col" style="margin-bottom: 20px">
+							<img src="http://via.placeholder.com/640x320" class="img-fluid">
+						</div>
+						Modal palace body Royal
+					</div>
+
+					<!--Trigger_QuestPopup-->
+					<div class="modal-footer">
+						<div class="col"><button type="submit" class="btn btn-danger btn-block" data-dismiss="modal" data-toggle="modal" data-target="#ModalQuest">퀘스트 시작하기</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Modal_QuestPopup-->
+		<div class="modal fade" id="ModalQuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-top: 100px">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col"></div>
+						<div class="col-9 text-center">
+							<h5 class="modal-title text-center" id="ModalLabel">Mdoal Quest title</h5>
+						</div>
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="modal-body text-center">
+						<div class="col" style="margin-bottom: 20px">
+							<img src="http://via.placeholder.com/640x320" class="img-fluid">
+						</div>
+						Royal palace body Modal
+						<div class="col">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+								<label class="form-check-label" for="inlineRadio1">1</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+								<label class="form-check-label" for="inlineRadio2">2</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+								<label class="form-check-label" for="inlineRadio3">3</label>
+							</div>
+						</div>
+					</div>
+
+					<!--Trigger_IncorrectPopup-->
+					<div class="modal-footer">
+						<div class="col"><button type="submit" class="btn btn-danger btn-block" data-dismiss="modal" data-toggle="modal" data-target="#ModalIncorrect">제출하기</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Modal_InorrectPopup-->
+		<div class="modal fade" id="ModalIncorrect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-top: 100px">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col"></div>
+						<div class="col-9 text-center">
+							<h5 class="modal-title text-center" id="ModalLabel">Mdoal Incorrect title</h5>
+						</div>
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="modal-body text-center">
+						<div class="col" style="margin-bottom: 20px">
+							<img src="http://via.placeholder.com/640x320" class="img-fluid">
+						</div>
+						Modal Royal body palace
+					</div>
+
+					<!--Trigger_QuestPopup-->
+					<div class="modal-footer">
+						<div class="col"><button type="submit" class="btn btn-danger btn-block" data-dismiss="modal" data-toggle="modal" data-target="#ModalQuest">재도전하기</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Modal_CorrectPopup-->
+		<div class="modal fade" id="ModalCorrect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-top: 100px">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col"></div>
+						<div class="col-9 text-center">
+							<h5 class="modal-title text-center" id="ModalLabel">Mdoal Correct title</h5>
+						</div>
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="modal-body text-center">
+						<div class="col" style="margin-bottom: 20px">
+							<img src="http://via.placeholder.com/640x320" class="img-fluid">
+						</div>
+						body Modal Royal palace
+					</div>
+
+					<div class="modal-footer">
+						정답입니다! 퀘스트성공!
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+</body>
+</html>
