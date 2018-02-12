@@ -27,7 +27,6 @@
 				<div class="form-group row lp-btn-upperspace">
 					<div class="col" id="result_div">
 						<input type="number" class="form-control" id="InputPhoneNum3" placeholder="휴대폰 번호를 입력해 주세요" required> 
-						/*왜 스크롤바가 생겼는지  form-control required */
 					</div>
 				</div>
 			</form>
@@ -70,25 +69,19 @@
 				var phoneNumber = $("#InputPhoneNum3").val();//input박스 안에 쓰는 값.
 				$("#InputPhoneNum3").remove();//2. 입력창 지움
 				$("#result_div").append("<p class='text-center font-weight-bold'>아이디는 " + phoneNumber +"입니다.</p>");
-				//$("#result_div").html("아이디는 " +phoneNumber +"입니다.");//$("#result_div").html("아이디는 " +data +"입니다."); //3. 
+				$("#result_div").html("아이디는 " +phoneNumber +"입니다.");//$("#result_div").html("아이디는 " +data +"입니다."); //3. 
 				$("#btn_findID").remove();
 				$("#result_btn").append("<a class='btn btn-danger btn-block' href='login.html' role='button'>확인</a>");
-				//location.replace("result_findID.html");
 				jQuery.ajax({
 					type:"POST",
-					url:"", //서버주소
+					url:"http://13.124.63.236:8080/gungduk/api/v1/searchId?phoneNum=phoneNumber", //서버주소
 					data:{"phoneNumber":phoneNumber}, // 줄 때랑 받을 때랑 차이가 있는지
 					dataType:"JSON",
 					success:function(data){
-						//1. 서버로부터 data를 받아서
-						//2. 입력창을 지우고 아이디텍스트를 넣어줌
-						//3. 서버로부터 data를 받으면 페이지 이동 후 
-						//4. 이동한 페이지 div에 뿌려줌
 						$("#InputPhoneNum3").remove();//2. 입력창 지움
-						$("#result_div").append("<p class='text-center font-weight-bold'>아이디는 " + phoneNumber +"입니다.</p>");
-						$("#btn_findID").remove();
-						$("#result_btn").append("<a class='btn btn-danger btn-block' href='login.html' role='button'>확인</a>");
-						//location.replace("result_findID.html");
+						$("#result_div").append("<p class='text-center font-weight-bold'>아이디는 " + data +"입니다.</p>"); //data뿌림
+						$("#btn_findID").remove(); //찾기버튼 삭제
+						$("#result_btn").append("<a class='btn btn-danger btn-block' href='login.html' role='button'>확인</a>"); //확인 버튼 생성 
 					},
 					error:function(xhr, status, error){ //여기 물어보기
 						alert("다시 시도해주세요."); 
