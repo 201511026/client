@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+	<title>회원정보 수정</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles.css">
+	<script>
+		//이메일 받아오기
+		var userID = sessionStorage.getItem("id");
+		var userPassword = sessionStorage.getItem("session_pw");
+		//비밀번호 확인하기
+		var checkpw = function(){
+			if(document.getElementById("password12").value!=""&&document.getElementById("checkPassword12").value!=""){
+				if(document.getElementById("password12").value==document.getElementById("checkPassword12").value){
+					document.getElementById("result_checkpwd").style.color="green";
+					document.getElementById("result_checkpwd").innerHTML="비밀번호가 일치합니다.";
+				}else{
+					document.getElementById("result_checkpwd").style.color="red";
+					document.getElementById("result_checkpwd").innerHTML="비밀번호가 일치하지않습니다.";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<br><br><br><br>  
+	<div class="container-fluid">
+		<form>
+			<div class="form-group row lp-title-upperspace">
+				<label class="col-3 col-form-label font-weight-bold text-center">ID</label>
+				<div class="col-9" id="myID">
+					<script>
+						document.write("<p class ='font-weight-bold'>"+ userID+"</p>");
+					</script>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="InputPassword2" class="col-3 col-form-label text-center font-weight-bold">PW</label>
+				<div class="col-9">
+					<input type="password" class="form-control" id="password12" placeholder=userPassword onkeyup="checkpw();" required>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="InputPassword2" class="col-3 col-form-label text-center font-weight-bold">PW 확인</label>
+				<div class="col-9">
+					<input type="password" class="form-control" id="checkPassword12" placeholder="Enter password" onkeyup="checkpw();" required>
+					<div id="result_checkpwd" style="color:red;"></div>
+				</div> 
+				<div class="col-9">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="InputEmail" class="col-3 col-form-label text-center font-weight-bold">Email</label>
+				<div class="col-9">
+					<input class="form-control" id="email2" placeholder="Enter Email"  required>
+				</div>
+			</div>		
+
+			<div class="form-group row">
+				<label for="InputPhoneNum2" class="col-3 col-form-label text-center font-weight-bold">핸드폰번호</label>
+				<div class="col-9">
+					<input class="form-control" id="phoneNum2" placeholder="Enter phone number" required>
+				</div>
+			</div>
+			<br />
+			<div class="row lp-btn-upperspace">
+				<div class="col">
+					<button id="btn_changeInfo" type="button" class="btn btn-danger btn-block">수정</button>
+				</div>
+				<div class="col">
+					<a class="btn btn-danger btn-block" href="mypage.html" role="button">취소</a>
+				</div>
+			</div>
+			</form>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!--session에 있는 비밀번호 띄워주기-->
+	<script type="text/javascript">	
+      	$(document).ready(function(){
+      		$("#password12").val(userPassword);
+      	});
+	</script>
+	<!--현재 로그인 되어 있는 user의 비밀번호와 핸드폰 번호 받아오기 -->
+	<script>
+		console.log(sessionStorage.getItem("id"));
+		$(function(){
+			var userID2 = "id=" + sessionStorage.getItem("id"); 
+			$.ajax({
+				type : "POST",
+				url : "http://13.125.138.168:8080/gungduk/api/v1/modifyInfo",
+				data : userID2,
+				async: false,
+				success: function(data){
+					console.log("pw "+data[0].pw);
+					console.log("email"+data[0].email);
+					console.log("phoneNum "+data[0].phoneNum);
+					//$("#password12").val(data[0].pw);
+					$("#email2").val(data[0].email)
+					$("#phoneNum2").val(data[0].phoneNum);
+				},
+				error:function(request, error){
+					alert("message: "+request.responseText);
+				}
+			});
+		});
+	</script>
+	<!--변경된 비밀번호와 핸드폰 번호를 서버에 전달-->
+	<script>
+		$(function(){
+			$("#btn_changeInfo").click(function(){
+				var userID3 = sessionStorage.getItem("id");
+				var newPW = $("#password12").val();
+				var newEmail = $("#email2").val();
+				var newPhoneNum = $("#phoneNum2").val();
+
+				$.ajax({
+					type : "POST",
+					url : "http://13.125.138.168:8080/gungduk/api/v1/updateInfo",
+					data : {"id": userID3, "pw": newPW, "email":newEmail, "phoneNum": newPhoneNum},
+					async : false,
+					success : function(data){
+						if($("#password12").val()==""|| $("#checkPassword12").val()=="" || $("#phoneNum2").val()==""){
+							alert("모든 항목을 입력해주세요.");
+						}else{
+							if(($("#password12").val() != $("#checkPassword12").val())){
+								alert("비밀번호가 일치하지 않습니다.");
+							}else{
+								alert("회원정보가 수정되었습니다.");
+								location.replace("mypage.html");
+							}
+						}
+					},
+					error :function(request, error){
+						alert("message: "+request.responseText);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
