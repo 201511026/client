@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>findID</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<!--<link rel="stylesheet" href="css/styles.css">-->
+	</head>
+
+	<body>
+		<br />
+		<div class="container-fluid">
+			<div class="row mp-title-space">
+				<div class="col">
+					<a class="btn btn-danger btn-block" href="findID.html" role="button">아이디 찾기</a>
+				</div>
+				<div class="col">
+					<a class="btn btn-danger btn-block" href="findpassword.html" role="button">패스워드 찾기</a>
+				</div>
+			</div>
+			<br /><br /><br /><br /><br />
+			<form>
+				<div class="form-group row lp-btn-upperspace">
+					<div class="col" id="result_div">
+						<input type="number" class="form-control" id="InputPhoneNum3" placeholder="휴대폰 번호를 입력해 주세요" required>
+					</div>
+				</div>
+			</form>
+			<div class="row">
+					<div class="col"></div>
+					<div class="col-6" id="result_btn">
+						<br>
+						<button id="btn_findID" class="btn btn-danger btn-block">ID 찾기</button>
+						<a role ="button" id="btn_signin" href="signin.html" class="btn btn-danger btn-block text-white">로그인으로 이동</a>
+					</div>
+					<div class="col"></div>
+			</div>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
+			$(function(){
+				$("#btn_findID").click(function(){
+					var phoneNum = "phoneNum=" + $("#InputPhoneNum3").val();
+					$.ajax({
+						type:'POST',
+						url:'http://13.125.138.168:8080/gungduk/api/v1/searchId',
+						data: phoneNum,
+						async:false,
+						success:function(data){
+							if($("InputPhoneNum3").val()==""){
+								alert("입력해주세요.");
+							}
+							else{
+								if(data=="error")
+									alert("존재하지 않는 번호입니다.");
+								else{
+									$("#InputPhoneNum3").remove();
+									$("#btn_signin").remove();
+									$("#result_div").append("<p class='text-center font-weight-bold'>아이디는 " + data +"입니다.</p>");
+									$("#btn_findID").remove();
+									$("#result_btn").append("<a class='btn btn-danger btn-block' href='signin.html' role='button'>확인</a>");
+								}
+							}
+						},
+						error:function(request,error){ 
+							alert("message:"+request.responseText);
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
