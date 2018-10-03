@@ -293,24 +293,15 @@
 
          map.setCenter(nowHere); // 중심 좌표 이동
          map.setZoom(13);     // 줌 레벨 변경
-
-         // nowHere_marker = new naver.maps.Marker({
-         // position: new naver.maps.LatLng(lat, lon),
-         // map: map
-         // });
-
+         
          nowHere_marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(lat, lon),
             map: map,
             icon: {
-               url: './img/ic_place_black_24dp_1x.png',
-               // size: new naver.maps.Size(35, 36),
-               // origin: new naver.maps.Point(0, 0),
-                 // anchor: new naver.maps.Point(25, 26)
+               url: './img/ic_place_black_24dp_1x.png'
             }
          });
 
-         // var wsUri = "ws://13.125.138.168:8080/gungduk/websocket/echo.do";
          var wsUri = "ws://echo.websocket.org";
          var userID = sessionStorage.getItem("id");
 
